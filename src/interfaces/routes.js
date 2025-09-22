@@ -1,4 +1,13 @@
 const express = require("express");
+const router = express.Router();
+
+const {
+  createGrainContract,
+  listGrainContracts,
+  updateGrainContract,
+  deleteGrainContract,
+} = require("./grainContractController");
+
 const {
   register,
   login,
@@ -14,7 +23,12 @@ const {
   deleteSafra,
 } = require("./safraController");
 
-const router = express.Router();
+const {
+  createContract,
+  listContracts,
+  updateContract,
+  deleteContract,
+} = require("./contractController");
 
 router.post("/register", register);
 router.post("/login", login);
@@ -33,5 +47,17 @@ router.post("/safras", createSafra);
 router.get("/safras", listSafras);
 router.patch("/safras/:id", updateSafra);
 router.delete("/safras/:id", deleteSafra);
+
+// Contract CRUD endpoints
+router.post("/contracts", createContract);
+router.get("/contracts", listContracts); // filter by id with ?id=...
+router.patch("/contracts/:id", updateContract);
+router.delete("/contracts/:id", deleteContract);
+
+// GrainContract CRUD endpoints
+router.post("/grain-contracts", createGrainContract);
+router.get("/grain-contracts", listGrainContracts); // filter by ?type=...&contractNumber=...
+router.patch("/grain-contracts/:id", updateGrainContract);
+router.delete("/grain-contracts/:id", deleteGrainContract);
 
 module.exports = router;

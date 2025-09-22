@@ -16,7 +16,8 @@ const createSafra = async (req, res) => {
 // List all Safras
 const listSafras = async (req, res) => {
   try {
-    const data = await Safra.findAll();
+    const safras = await Safra.findAll();
+    const data = safras.map(({ id, description }) => ({ id, description }));
     res.json({ data });
   } catch (err) {
     res.status(500).json({ error: err.message });
