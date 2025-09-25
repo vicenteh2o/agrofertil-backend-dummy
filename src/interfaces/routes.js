@@ -30,6 +30,13 @@ const {
   deleteContract,
 } = require("./contractController");
 
+const {
+  createRomaneoSummary,
+  listRomaneoSummaries,
+  updateRomaneoSummary,
+  deleteRomaneoSummary,
+} = require("./romaneoSummaryController");
+
 router.post("/register", register);
 router.post("/login", login);
 
@@ -59,5 +66,11 @@ router.post("/grain-contracts", createGrainContract);
 router.get("/grain-contracts", listGrainContracts); // filter by ?type=...&contractNumber=...
 router.patch("/grain-contracts/:id", updateGrainContract);
 router.delete("/grain-contracts/:id", deleteGrainContract);
+
+// RomaneoSummary CRUD endpoints
+router.post("/romaneo-summaries", createRomaneoSummary);
+router.get("/romaneo-summaries", listRomaneoSummaries);
+router.patch("/romaneo-summaries/:id", updateRomaneoSummary);
+router.delete("/romaneo-summaries/:id", deleteRomaneoSummary);
 
 module.exports = router;
