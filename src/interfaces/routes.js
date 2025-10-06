@@ -37,6 +37,27 @@ const {
   deleteRomaneoSummary,
 } = require("./romaneoSummaryController");
 
+const {
+  createRomaneoHeader,
+  listRomaneoHeaders,
+  updateRomaneoHeader,
+  deleteRomaneoHeader,
+} = require("./romaneoHeaderController");
+
+const {
+  createRomaneo,
+  listRomaneos,
+  updateRomaneo,
+  deleteRomaneo,
+} = require("./romaneoController");
+
+const {
+  createFinancialOpenInvoice,
+  listFinancialOpenInvoices,
+  updateFinancialOpenInvoice,
+  deleteFinancialOpenInvoice,
+} = require("./financialOpenInvoiceController");
+
 router.post("/register", register);
 router.post("/login", login);
 
@@ -72,5 +93,23 @@ router.post("/romaneo-summaries", createRomaneoSummary);
 router.get("/romaneo-summaries", listRomaneoSummaries);
 router.patch("/romaneo-summaries/:id", updateRomaneoSummary);
 router.delete("/romaneo-summaries/:id", deleteRomaneoSummary);
+
+// RomaneoHeader CRUD endpoints
+router.post("/romaneo-headers", createRomaneoHeader);
+router.get("/romaneo-headers", listRomaneoHeaders);
+router.patch("/romaneo-headers/:id", updateRomaneoHeader);
+router.delete("/romaneo-headers/:id", deleteRomaneoHeader);
+
+// Romaneo CRUD endpoints
+router.post("/romaneos", createRomaneo);
+router.get("/romaneos", listRomaneos);
+router.patch("/romaneos/:id", updateRomaneo);
+router.delete("/romaneos/:id", deleteRomaneo);
+
+// FinancialOpenInvoice CRUD endpoints
+router.post("/financial-open-invoices", createFinancialOpenInvoice);
+router.get("/financial-open-invoices", listFinancialOpenInvoices);
+router.patch("/financial-open-invoices/:id", updateFinancialOpenInvoice);
+router.delete("/financial-open-invoices/:id", deleteFinancialOpenInvoice);
 
 module.exports = router;
